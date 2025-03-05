@@ -11,7 +11,13 @@
 <body>
     <nav class="navbar">
         <div class="logo">
-            <h1>KoçumBenim</h1>
+            <div class="logo-container">
+                <i class="fas fa-graduation-cap logo-icon"></i>
+                <div class="logo-text">
+                    <h1>DGS<span>Koçum</span></h1>
+                    <p class="logo-slogan">Hedefine Bizimle Ulaş</p>
+                </div>
+            </div>
         </div>
         <div class="nav-links">
             <a href="#anasayfa" class="active">Ana Sayfa</a>
@@ -19,7 +25,10 @@
             <a href="#koclarmiz">Koçlarımız</a>
             <a href="#hizmetler">Hizmetler</a>
             <a href="#iletisim">İletişim</a>
-            <a href="login.html" class="login-btn">Giriş Yap</a>
+            <a href="login.html" class="login-btn" id="loginButton">
+                <i class="fas fa-user"></i>
+                <span>Giriş Yap</span>
+            </a>
         </div>
         <div class="menu-btn">
             <i class="fas fa-bars"></i>
@@ -302,5 +311,29 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        // Check if user is logged in
+        document.addEventListener('DOMContentLoaded', () => {
+            const loginButton = document.getElementById('loginButton');
+            const isLoggedIn = localStorage.getItem('isLoggedIn');
+            const userName = localStorage.getItem('userName');
+
+            if (isLoggedIn && userName) {
+                loginButton.innerHTML = `
+                    <i class="fas fa-user"></i>
+                    <span>${userName}</span>
+                `;
+                loginButton.href = '#';
+                loginButton.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    if (confirm('Çıkış yapmak istiyor musunuz?')) {
+                        localStorage.removeItem('isLoggedIn');
+                        localStorage.removeItem('userName');
+                        window.location.reload();
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html>
