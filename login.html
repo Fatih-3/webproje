@@ -172,6 +172,31 @@
         .login-form.hidden {
             display: none;
         }
+
+        .forgot-password-form {
+            display: none;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .forgot-password-form.active {
+            display: flex;
+        }
+
+        /* Form geçişleri için animasyon */
+        .auth-form {
+            transition: all 0.3s ease;
+        }
+
+        .auth-form.hidden {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+
+        .auth-form.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
 </head>
 <body>
@@ -268,6 +293,40 @@
                     Zaten hesabınız var mı? <a href="#" id="showLogin">Giriş Yap</a>
                 </div>
             </form>
+
+            <!-- Şifremi Unuttum Form -->
+            <form class="auth-form forgot-password-form" id="forgotPasswordForm">
+                <div class="auth-header">
+                    <h1>Şifremi Sıfırla</h1>
+                    <p>Yeni bir şifre oluşturun</p>
+                </div>
+                
+                <div class="form-group">
+                    <label for="resetEmail">E-posta</label>
+                    <input type="email" id="resetEmail" placeholder="E-posta adresiniz" required>
+                </div>
+                
+                <button type="submit" class="auth-btn">Şifremi Sıfırla</button>
+                
+                <div class="auth-separator">
+                    <span>veya</span>
+                </div>
+                
+                <div class="social-login">
+                    <button type="button" class="social-btn google">
+                        <i class="fab fa-google"></i>
+                        Google
+                    </button>
+                    <button type="button" class="social-btn facebook">
+                        <i class="fab fa-facebook-f"></i>
+                        Facebook
+                    </button>
+                </div>
+                
+                <div class="auth-links">
+                    <a href="#" id="backToLogin">Giriş sayfasına dön</a>
+                </div>
+            </form>
         </div>
     </div>
 
@@ -275,12 +334,16 @@
         // Form switching
         const loginForm = document.getElementById('loginForm');
         const registerForm = document.getElementById('registerForm');
+        const forgotPasswordForm = document.getElementById('forgotPasswordForm');
         const showRegisterBtn = document.getElementById('showRegister');
         const showLoginBtn = document.getElementById('showLogin');
+        const forgotPasswordLink = document.getElementById('forgotPassword');
+        const backToLoginBtn = document.getElementById('backToLogin');
 
         showRegisterBtn.addEventListener('click', (e) => {
             e.preventDefault();
             loginForm.classList.add('hidden');
+            forgotPasswordForm.classList.remove('active');
             registerForm.classList.add('active');
         });
 
@@ -288,6 +351,21 @@
             e.preventDefault();
             loginForm.classList.remove('hidden');
             registerForm.classList.remove('active');
+            forgotPasswordForm.classList.remove('active');
+        });
+
+        forgotPasswordLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            loginForm.classList.add('hidden');
+            registerForm.classList.remove('active');
+            forgotPasswordForm.classList.add('active');
+        });
+
+        backToLoginBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            loginForm.classList.remove('hidden');
+            registerForm.classList.remove('active');
+            forgotPasswordForm.classList.remove('active');
         });
 
         // Login form submission
@@ -300,9 +378,6 @@
             console.log('Giriş denemesi:', { email, password });
             
             // Başarılı giriş simülasyonu
-            localStorage.setItem('isLoggedIn', 'true');
-            localStorage.setItem('userName', email.split('@')[0]); // Email adresinin @ işaretinden önceki kısmını kullanıcı adı olarak kullan
-            
             alert('Giriş başarılı!');
             window.location.href = 'index.html';
         });
@@ -323,18 +398,27 @@
             // Burada kayıt işlemleri yapılacak
             console.log('Kayıt denemesi:', { name, email, password });
             
-            // Başarılı kayıt simülasyonu
             alert('Kayıt başarılı! Giriş yapabilirsiniz.');
             loginForm.classList.remove('hidden');
             registerForm.classList.remove('active');
         });
 
-        // Forgot password
-        document.getElementById('forgotPassword').addEventListener('click', (e) => {
+        // Forgot password form submission
+        forgotPasswordForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            const email = prompt('Şifre sıfırlama bağlantısı için e-posta adresinizi girin:');
-            if (email) {
-                alert(`Şifre sıfırlama bağlantısı ${email} adresine gönderildi.`);
+            const email = document.getElementById('resetEmail').value;
+            
+            try {
+                // Burada normalde API'ye istek atılacak
+                console.log('Şifre sıfırlama denemesi:', { email });
+                
+                alert(`Şifre sıfırlama bağlantısı ${email} adresine gönderildi. Lütfen e-postanızı kontrol edin.`);
+                
+                // Başarılı olduktan sonra giriş formuna geri dön
+                loginForm.classList.remove('hidden');
+                forgotPasswordForm.classList.remove('active');
+            } catch (error) {
+                alert('Bir hata oluştu. Lütfen tekrar deneyin.');
             }
         });
     </script>
