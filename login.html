@@ -7,6 +7,137 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-box">
+            <!-- Login Form -->
+            <form class="auth-form login-form" id="loginForm">
+                <div class="auth-header">
+                    <h1>Giriş Yap</h1>
+                    <p>Hesabınıza giriş yapın</p>
+                </div>
+                
+                <div class="form-group">
+                    <label for="loginEmail">E-posta</label>
+                    <input type="email" id="loginEmail" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="loginPassword">Şifre</label>
+                    <input type="password" id="loginPassword" required>
+                </div>
+                
+                <button type="submit" class="auth-btn">Giriş Yap</button>
+                
+                <div class="auth-links">
+                    <a href="#" id="forgotPassword">Şifremi Unuttum</a>
+                </div>
+                
+                <div class="auth-separator">
+                    <span>veya</span>
+                </div>
+                
+                <div class="social-login">
+                    <button type="button" class="social-btn google">
+                        <i class="fab fa-google"></i>
+                        Google
+                    </button>
+                    <button type="button" class="social-btn facebook">
+                        <i class="fab fa-facebook-f"></i>
+                        Facebook
+                    </button>
+                </div>
+                
+                <div class="auth-links">
+                    Hesabınız yok mu? <a href="#" id="showRegister">Kayıt Ol</a>
+                </div>
+            </form>
+
+            <!-- Kayıt ol  Form -->
+            <form class="auth-form register-form" id="registerForm">
+                <div class="auth-header">
+                    <h1>Kayıt Ol</h1>
+                    <p>Yeni bir hesap oluşturun</p>
+                </div>
+                
+                <div class="form-group">
+                    <label for="registerName">Ad Soyad</label>
+                    <input type="text" id="registerName" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="registerEmail">E-posta</label>
+                    <input type="email" id="registerEmail" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="registerPassword">Şifre</label>
+                    <input type="password" id="registerPassword" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="registerPasswordConfirm">Şifre Tekrar</label>
+                    <input type="password" id="registerPasswordConfirm" required>
+                </div>
+                
+                <button type="submit" class="auth-btn">Kayıt Ol</button>
+                
+                <div class="auth-separator">
+                    <span>veya</span>
+                </div>
+                
+                <div class="social-login">
+                    <button type="button" class="social-btn google">
+                        <i class="fab fa-google"></i>
+                        Google
+                    </button>
+                    <button type="button" class="social-btn facebook">
+                        <i class="fab fa-facebook-f"></i>
+                        Facebook
+                    </button>
+                </div>
+                
+                <div class="auth-links">
+                    Zaten hesabınız var mı? <a href="#" id="showLogin">Giriş Yap</a>
+                </div>
+            </form>
+
+            <!-- Şifremi Unuttum Form -->
+            <form class="auth-form forgot-password-form" id="forgotPasswordForm">
+                <div class="auth-header">
+                    <h1>Şifremi Sıfırla</h1>
+                    <p>Yeni bir şifre oluşturun</p>
+                </div>
+                
+                <div class="form-group">
+                    <label for="resetEmail">E-posta</label>
+                    <input type="email" id="resetEmail" placeholder="E-posta adresiniz" required>
+                </div>
+                
+                <button type="submit" class="auth-btn">Şifremi Sıfırla</button>
+                
+                <div class="auth-separator">
+                    <span>veya</span>
+                </div>
+                
+                <div class="social-login">
+                    <button type="button" class="social-btn google">
+                        <i class="fab fa-google"></i>
+                        Google
+                    </button>
+                    <button type="button" class="social-btn facebook">
+                        <i class="fab fa-facebook-f"></i>
+                        Facebook
+                    </button>
+                </div>
+                
+                <div class="auth-links">
+                    <a href="#" id="backToLogin">Giriş sayfasına dön</a>
+                </div>
+            </form>
+        </div>
+    </div>
     <style>
         .auth-container {
             min-height: 100vh;
@@ -198,140 +329,9 @@
             transform: translateY(0);
         }
     </style>
-</head>
-<body>
-    <div class="auth-container">
-        <div class="auth-box">
-            <!-- Login Form -->
-            <form class="auth-form login-form" id="loginForm">
-                <div class="auth-header">
-                    <h1>Giriş Yap</h1>
-                    <p>Hesabınıza giriş yapın</p>
-                </div>
-                
-                <div class="form-group">
-                    <label for="loginEmail">E-posta</label>
-                    <input type="email" id="loginEmail" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="loginPassword">Şifre</label>
-                    <input type="password" id="loginPassword" required>
-                </div>
-                
-                <button type="submit" class="auth-btn">Giriş Yap</button>
-                
-                <div class="auth-links">
-                    <a href="#" id="forgotPassword">Şifremi Unuttum</a>
-                </div>
-                
-                <div class="auth-separator">
-                    <span>veya</span>
-                </div>
-                
-                <div class="social-login">
-                    <button type="button" class="social-btn google">
-                        <i class="fab fa-google"></i>
-                        Google
-                    </button>
-                    <button type="button" class="social-btn facebook">
-                        <i class="fab fa-facebook-f"></i>
-                        Facebook
-                    </button>
-                </div>
-                
-                <div class="auth-links">
-                    Hesabınız yok mu? <a href="#" id="showRegister">Kayıt Ol</a>
-                </div>
-            </form>
-
-            <!-- Register Form -->
-            <form class="auth-form register-form" id="registerForm">
-                <div class="auth-header">
-                    <h1>Kayıt Ol</h1>
-                    <p>Yeni bir hesap oluşturun</p>
-                </div>
-                
-                <div class="form-group">
-                    <label for="registerName">Ad Soyad</label>
-                    <input type="text" id="registerName" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="registerEmail">E-posta</label>
-                    <input type="email" id="registerEmail" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="registerPassword">Şifre</label>
-                    <input type="password" id="registerPassword" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="registerPasswordConfirm">Şifre Tekrar</label>
-                    <input type="password" id="registerPasswordConfirm" required>
-                </div>
-                
-                <button type="submit" class="auth-btn">Kayıt Ol</button>
-                
-                <div class="auth-separator">
-                    <span>veya</span>
-                </div>
-                
-                <div class="social-login">
-                    <button type="button" class="social-btn google">
-                        <i class="fab fa-google"></i>
-                        Google
-                    </button>
-                    <button type="button" class="social-btn facebook">
-                        <i class="fab fa-facebook-f"></i>
-                        Facebook
-                    </button>
-                </div>
-                
-                <div class="auth-links">
-                    Zaten hesabınız var mı? <a href="#" id="showLogin">Giriş Yap</a>
-                </div>
-            </form>
-
-            <!-- Şifremi Unuttum Form -->
-            <form class="auth-form forgot-password-form" id="forgotPasswordForm">
-                <div class="auth-header">
-                    <h1>Şifremi Sıfırla</h1>
-                    <p>Yeni bir şifre oluşturun</p>
-                </div>
-                
-                <div class="form-group">
-                    <label for="resetEmail">E-posta</label>
-                    <input type="email" id="resetEmail" placeholder="E-posta adresiniz" required>
-                </div>
-                
-                <button type="submit" class="auth-btn">Şifremi Sıfırla</button>
-                
-                <div class="auth-separator">
-                    <span>veya</span>
-                </div>
-                
-                <div class="social-login">
-                    <button type="button" class="social-btn google">
-                        <i class="fab fa-google"></i>
-                        Google
-                    </button>
-                    <button type="button" class="social-btn facebook">
-                        <i class="fab fa-facebook-f"></i>
-                        Facebook
-                    </button>
-                </div>
-                
-                <div class="auth-links">
-                    <a href="#" id="backToLogin">Giriş sayfasına dön</a>
-                </div>
-            </form>
-        </div>
-    </div>
 
     <script>
-        // Form switching
+        // Form Değiştirme
         const loginForm = document.getElementById('loginForm');
         const registerForm = document.getElementById('registerForm');
         const forgotPasswordForm = document.getElementById('forgotPasswordForm');
@@ -368,7 +368,7 @@
             forgotPasswordForm.classList.remove('active');
         });
 
-        // Login form submission
+        // Login form Gönderim
         loginForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const email = document.getElementById('loginEmail').value;
@@ -382,7 +382,7 @@
             window.location.href = 'index.html';
         });
 
-        // Register form submission
+        // form gönderim kaydet
         registerForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const name = document.getElementById('registerName').value;
@@ -403,7 +403,7 @@
             registerForm.classList.remove('active');
         });
 
-        // Forgot password form submission
+        // şifremi unuttum formu gönderim
         forgotPasswordForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             const email = document.getElementById('resetEmail').value;
